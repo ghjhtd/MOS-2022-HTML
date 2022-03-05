@@ -130,11 +130,17 @@ Tomcat 属于轻量级应用服务器，在中小型系统和并发访问用户�
 HTML 是一种计算机语言，但它不能编程，只能用来标记网页中的内容。HTML 通过不同的标签来标记不同的内容、格式、布局等，例如：
 
 - <img> 标签表示一张图片；
+
 - <a> 标签表示一个链接；
+
 - <table> 标签表示一个表格；
+
 - <input> 标签表示一个输入框；
+
 - \<p>  标签表示一段文本；
+
 - <strong> 标签表示文本加粗效果；
+
 - \<div> 标签表示块级布局。
 
 #### 总结
@@ -280,9 +286,21 @@ Atom 是github专门为程序员推出的一个跨平台文本编辑器。平易
 
 ## 2.浏览器开发者工具使用：
 
+![image-20220305104314851](https://s2.loli.net/2022/03/05/1FdZM5msiYgpN4W.png)
 
+F12打开开发者工具
 
+Chrome开发者工具中，调试时使用最多的三个功能页面是：元素（ELements）、控制台（Console）、源代码（Sources），此外还有网络（Network）等。
 
++ **元素（Elements）**：用于查看或修改HTML元素的属性、CSS属性、监听事件、断点等。css可以即时修改，即时显示。大大方便了开发者调试页面
++ **控制台（Console）**：控制台一般用于执行一次性代码，查看JavaScript对象，查看调试日志信息或异常信息。还可以当作Javascript API查看用。例如我想查看console都有哪些方法和属性，我可以直接在Console中输入"console"并执行Sources:断点调试JS。
++ **源代码（Sources）**：该页面用于查看页面的HTML文件源代码、JavaScript源代码、CSS源代码，此外最重要的是可以调试JavaScript源代码，可以给JS代码添加断点等。
++ **网络（Network）**：记录当前页面请求加载信息，并记录各个请求资源信息（包括状态、资源类型、大小、所用时间等），可以根据这个进行网络性能优化。
++ **性能（Performance）:**用来对当前页面进行性能分析。
++ **内存（Memory）:**用于分析当前页面内存消耗。
++ **应用（Application）:**记录网站加载的所有资源信息，包括存储数据（Local Storage、Session Storage、IndexedDB、Web SQL、Cookies）、缓存数据等。
++ **安全（Security）:**判断当前网页是否安全。
++ **审计（Audits）:**对当前网页进行网络利用情况、网页性能方面的诊断，并给出一些优化建议。
 
 ## 3.HTML基本语法：
 
@@ -547,6 +565,8 @@ ESP32 有丰富的资源，Xtensa® 32-bitLX6单/双核处理器，运算能力�
 
 ## 6.个人网站搭建流程
 
+![image-20220305190927994](https://s2.loli.net/2022/03/05/glF4mhB6dR9zsYP.png)
+
 > Linux服务器环境搭建可以参考我原来写过的一篇文章：http://www.gonghaojing.top:8080/archives/linux-yuan-cheng-fu-wu-qi-huan-jing-da-jian
 
 ### a.云服务器选型：
@@ -586,6 +606,7 @@ Tomcat服务器教程：https://blog.csdn.net/heyeqingquan/article/details/96437
 > 个人博客。可以使用WordPress或者基于Java的halo博客工具，快速开发出自己的博客。
 
 + Halo官网：https://halo.run/
++ Halo美化教程：https://bestzuo.cn/posts/halo-beauty.html#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2
 
 ### d.备案：
 

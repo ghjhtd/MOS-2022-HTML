@@ -1,0 +1,618 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>MOS 2022 HTML培训</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='mos-2022-html培训'><span>MOS 2022 HTML培训</span><span>		</span></h1><p><img src="https://s2.loli.net/2022/03/03/3B2qNIEsjDKU8L5.png" referrerpolicy="no-referrer" alt="2"></p><p><img src="https://s2.loli.net/2022/03/04/W3w1nhO4PFCRUc2.png" referrerpolicy="no-referrer" alt="image-20220304194516773"></p><p><span>本次课程不会非常详细的讲述html的各种标签，主要是带大家过一遍流程，让大家有一个整体的认知。</span></p><blockquote><p><span>                                                                                                                                                                                                                                  </span><strong><span>信管1901 龚皓靖</span></strong></p></blockquote><h2 id='1html概述'><span>1.HTML概述</span></h2><h3 id='a网站是什么'><span>a.网站是什么？</span></h3><h4 id='举个例子'><span>举个例子：</span></h4><p><span>		</span><span>一个网站由很多网页组成，可以将多个网页放在一个文件夹中，这个文件夹还可以嵌套其它子文件夹，最终形成一个树状结构，如下图所示：</span></p><p><img src="https://s2.loli.net/2022/03/03/5WuvDS7Iir3aj1l.png" referrerpolicy="no-referrer" alt="image-20220303194006142"></p><p><span>		</span><span>如果我们给顶级目录 program 绑定一个域名 </span><a href='http://www.domain.com' target='_blank' class='url'>www.domain.com</a><span>，那么用户就可以通过 </span><a href='http://www.domain.com' target='_blank' class='url'>www.domain.com</a><span> 来访问 program 文件夹中的所有文件（包括子文件夹），例如：</span></p><ul><li><a href='http://www.domain.com/demo.html' target='_blank' class='url'>www.domain.com/demo.html</a></li><li><a href='http://www.domain.com/python/for.html' target='_blank' class='url'>www.domain.com/python/for.html</a></li><li><a href='http://www.domain.com/java/spring.html' target='_blank' class='url'>www.domain.com/java/spring.html</a></li><li><a href='http://www.domain.com/java/maven/profile.html' target='_blank' class='url'>www.domain.com/java/maven/profile.html</a></li></ul><p><span>		</span><span>可以简单认为，</span><strong><span>网站就是一个绑定了域名的文件夹，该文件夹中可以包含子文件夹以及各种各样的文件</span></strong><span>，这些文件都可以通过域名来访问。当我们在地址栏中输入一个 </span><strong><span>URL</span></strong><span> 时，它其实已经展示了服务器上的目录结构，例如</span><a href='http://www.domain.com/python/for.html' target='_blank' class='url'>www.domain.com/python/for.html</a><span>，就表示访问 linux 目录下的 for.html 文件。</span></p><p><img src="https://s2.loli.net/2022/03/03/L4kbYB8DCxnFTOi.png" referrerpolicy="no-referrer" alt="image-20220303194517295"></p><h4 id='url'><strong><span>URL</span></strong></h4><p><span>URL是URI的一个子集。它是Uniform Resource Locator的缩写，译为“统一资源定位 符”。</span></p><p><span>通俗地说，URL是Internet上描述信息资源的字符串，主要用在各种WWW客户程序和服务器程序上。</span></p><p><span>采用URL可以用一种统一的格式来描述各种信息资源，包括文件、服务器的地址和目录等。</span><strong><span>URL是URI概念的一种实现方式</span></strong><span>。</span></p><p><span>URL的一般格式为(带方括号[]的为可选项)：</span></p><p><span>protocol :// hostname[:port] / path /xxx.html</span></p><p><span>URL的格式由三部分组成： </span></p><p><span>①第一部分是协议(或称为服务方式)。</span></p><p><span>②第二部分是存有该资源的主机IP地址(有时也包括端口号)。</span></p><p><span>③第三部分是主机资源的具体地址，如目录和文件名等。</span></p><p><span>第一部分和第二部分用“://”符号隔开，</span></p><p><span>第二部分和第三部分用“/”符号隔开。</span></p><p><span>第一部分和第二部分是不可缺少的，第三部分有时可以省略。 </span></p><hr /><blockquote><p><span>网站的本质特征就是</span><strong><span>超链接!!! </span></strong><span>WWW服务的基础是</span><strong><span>Web页</span></strong><span>，WWW的核心是</span><strong><span>Web服务器</span></strong><span>。</span></p></blockquote><ul><li><strong><span>WWW</span></strong><span>是以超文本标记语言 </span><strong><span>HTML</span></strong><span>（HyperText Markup Language）与超文本传输协议 </span><strong><span>HTTP</span></strong><span>（ Hyper Text Transfer Protocol)为基础，向用户提供统一访问界面的信息浏览系统。</span></li></ul><ul><li><strong><span>网页</span></strong><span>：网页是单个的HTML文件，是WWW服务器上公布信息的单位。</span></li><li><strong><span>网站</span></strong><span>：网站是存放在WWW服务器上的展现特定内容的相关</span><strong><span>网页</span></strong><span>和其它</span><strong><span>网络文件</span></strong><span>的集合。</span></li><li><strong><span>主页</span></strong><span>：主页是一个特殊的网页，是整个网站信息的起始点和汇总点。主页是访问者浏览网站信息文件的开始点。主页的文件名为index，后缀名为.htm 或.html</span></li></ul><h4 id='静态网页与动态网页'><span>静态网页与动态网页：</span></h4><p><span>		</span><span>在Internet早期，Web站点是由静态web页组成，静态页面只能固定地显示事先设计好的页面内容。随着Web业务处理越来越多，业务需求层次越来越高，比如商业网站中客户资料的获得、产品信息的查询、信息的反馈等，HTML的局限性日益明显。因此，能够与用户进行动态交互的技术就应运而生了。动态网页页面内容是经过了服务端处理，完成了动态的个性化设置。但是，客户端用户所接收到的结果以HTML格式显示，与传统页面没有任何区别。</span></p><p><img src="https://s2.loli.net/2022/03/04/RQurNlyqfMdGAkY.png" referrerpolicy="no-referrer" alt="image-20220304200036843"></p><p><img src="https://s2.loli.net/2022/03/03/N5wtR6sqdQG4VZT.png" referrerpolicy="no-referrer" alt="image-20220303192918413"></p><h6 id='常见的动态网页技术'><span>常见的动态网页技术：</span></h6><ul><li><span>CGI （Common Gateway Interface），公用网关接口。用来实现CGI应用程序的编程语言有许多种，如Visual Basic、 C/C++、Perl等。CGI方式编程困难且效率低，网站的每个客户在访问CGI程序时Web服务器都要单独建立一个应用进程，加重了服务器负荷。CGI多用在安全级别要求高的Web应用中。</span></li><li><span>ASP（Active Server Pages）是微软公司推出的Web应用程序开发技术。ASP允许用服务器端VBScript脚本语言编程，利用ASP内建对象和组件进一步扩展HTML，实现动态网页。ASP文件运行在服务器端，经过服务器解析之后将结果返回给客户浏览器。ASP的工作环境是微软的IIS应用服务器。一般与Access或My SQL、SQL Server数据库配合使用。</span></li><li><span>ASP.net技术是Microsoft.net技术框架中组成部分之一。可用任何与.net兼容的语言（包括C#、VB.net、JScript.net等）开发应用程序。文件一般以.aspx或.ashx结尾。运行环境是微软的IIS应用服务器。</span></li><li><span>JSP（Java Server Pages）是由Sun公司推出的，基于Java Servlet以及整个Java体系的Web开发技术。JSP可以创建安全和跨平台的动态网站。JSP代码被编译成Servlet并由Java虚拟机执行。① 通用性好，主流系统平台都支持JSP。② JSP使得页面内容与其显示相互独立。③ JSP继承Java技术的优点，包括存储管理和安全性。</span><strong><span>不少大型企业使用Java EE平台提供的JSP技术构建Web系统。</span></strong></li><li><span> PHP（Hypertext Preprocessor）----超文本预处理器。文件后缀名一般为 .php，运行于Apache Tomcat服务器。①  跨平台，PHP程序可以运行在Unix、Linux、Windows操作系统。 ② 语法简单，实用性强，它混合了C/C++、Java、Perl及PHP式的新语法。③ 效率高，PHP消耗较少的系统资源。④ 良好的数据库支持，只要数据库支持ODBC连接标准就行，一般与My SQL数据库配合使用。</span></li></ul><h4 id='web服务器'><span>Web服务器:</span></h4><p><span>Web服务器也可以称为</span><strong><span>网站服务器</span></strong><span>，可以用来放置网站文件，供用户浏览。目前最主流的Web服务器有</span><strong><span>IIS</span></strong><span>、</span><strong><span>Apache</span></strong><span>和</span><strong><span>Nginx</span></strong><span>，此外</span><strong><span>Tomcat</span></strong><span>的使用也比较常见，另外还有kangle、WebSphere和Weblogic等类型。</span></p><h5 id='windows-iis'><span>Windows IIS:</span></h5><p><span>IIS是Internet Information Server（信息服务）的缩写，也是微软主推的web服务器产品，适用于windows系统，很多著名网站都采用IIS搭建，ASP、.net开发的程序一般也只能在IIS上运行。</span></p><p><span>IIS提供了一个图形界面的管理工具，称为 Internet服务管理器，可用于监视配置和控制Internet服务，其中包括Web服务器、FTP服务器、NNTP服务器和SMTP服务器，分别用于网页浏览、文件传输、新闻服务和邮件发送等方面，IIS的使用让网络（包括互联网和局域网）上的信息发布变得非常简单。同时，IIS还提供ISAPI（Intranet Server API）作为扩展Web服务器功能的编程接口，并提供一个Internet数据库连接器，可以实现对数据库的查询和更新。</span></p><h5 id='apache'><span>Apache:</span></h5><p><span>Apache是目前世界上最流行的Web服务器之一，支持跨平台应用，可以运行在几乎所有的Unix、windows、linux系统平台上，尤其对linux的支持相当完美。</span></p><p><span>Apache是开源免费的，有很多开发者都参与了设计和改进，推动了产品的持续完善。Apache的特点是简单、高速、性能稳定，可作代理服务器使用。到目前为止，Apache仍然是世界上用的最多的Web服务器，其成功之处主要在于源码开放、强大的社区支持、跨平台应用以及可移植性等方面。不过，Apache是以进程为基础的结构，要比线程消耗更多的系统开支，不太适合于多处理器环境，还有就是并发不强，流量大了就容易出现500错误。</span></p><h5 id='nginx'><span>Nginx:</span></h5><p><span>Nginx是一种高性能的HTTP和反向代理web服务器，支持高并发和负载均衡，以稳定性、丰富的功能集、示例配置文件和低系统资源的消耗而闻名。</span></p><p><span>Nginx可以在大多数Unix/Linux上编译运行，并有Windows移植版。Nginx的安装简单、配置文件简洁（支持perl语法），同时Bug非常少，几乎可以做到7*24不间断运行，支持在不间断服务的情况下进行软件版本升级。在连接高并发的情况下，Nginx是Apache服务不错的替代品。同时Nginx的模块也非常丰富，能够满足不同的需求，适合做静态使用。另外Nginx还提供了IMAP/POP3/SMTP服务，是一个非常优秀的邮件代理服务器。</span></p><h5 id='tomcat'><span>Tomcat:</span></h5><p><span>Tomcat是一个开放源代码、运行servlet和JSP Web应用软件、并基于Java的Web应用软件容器。由于技术先进、性能稳定，而且免费，深受Java 爱好者欢迎，同时，也得到了部分软件开发商认可，成为目前比较流行的Web应用服务器。</span></p><p><span>Tomcat 属于轻量级应用服务器，在中小型系统和并发访问用户不是很多的场合下被普遍使用，是开发和调试JSP 程序的首选。和IIS等Web服务器一样，tomcat也有处理HTML页面的功能，另外它还是一个Servlet和JSP容器（默认模式下为独立的Servlet容器）。不过，Tomcat处理静态HTML的能力不如Apache服务器，目前Tomcat最新版本为9.0。</span></p><h5 id='其他'><span>其他:</span></h5><p><strong><span>Kangle</span></strong><span>是一款跨平台、功能强大、易操作的高性能web服务器和反向代理服务器，也是一款专为做虚拟主机研发的web服务器，实现虚拟主机独立进程、独立身份运行与用户安全隔离，支持php、asp、</span><a href='https://link.zhihu.com/?target=http%3A//asp.net'><span>http://asp.net</span></a><span>、java、ruby等多种动态开发语言。</span></p><p><strong><span>WebSphere</span></strong><span>是IBM 的软件平台，包含了编写、运行和监视全天候的工业强度的随需应变Web应用程序和跨平台、跨产品解决方案所需要的整个中间件基础设施，如服务器、服务和工具。WebSphere 是一个模块化的平台，基于业界支持的开放标准，并可在 Intel、Linux 和 z/OS等多平台运行。</span></p><p><strong><span>WebLogic</span></strong><span>是Oracle出品的一款多功能、基于标准的web应用服务器，是一款基于JAVAEE架构的中间件，用于开发、集成、部署和管理大型分布式Web应用、网络应用和数据库应用，将Java的动态功能和安全标准引入大型网络应用的开发、集成、部署和管理之中，为企业构建自己的应用提供了坚实的基础。</span></p><h3 id='b什么是html'><span>b.什么是html：</span></h3><blockquote><p><span>“html”是“Hyper Text Markup Language”的缩写，即</span><strong><span>“超文本标记语言”</span></strong><span>，是标准通用标记语言下的一个应用。html并不是一种编程语言，它是一种标记语言，是由一些标签组成，主要是用来制作网页的。为什么说是超文本语言呢？“超文本”指的是它的内容可以是一些非文本的内容，比如：图片、链接、声音等等。HTML是一种解释执行的语言，无需编译。它与操作系统平台的选择无关，只要有浏览器就可以运行HTML文档，显示网页内容</span></p></blockquote><h4 id='1-超文本'><span>1) 超文本</span></h4><p><span>也即超越纯文本，这意味着 HTML 文档不仅能包含文本（文字），还能包含图片、音视频、表格、列表、链接、按钮、输入框等高级内容。</span></p><h4 id='2-标记语言'><span>2) 标记语言</span></h4><p><span>HTML 是一种计算机语言，但它不能编程，只能用来标记网页中的内容。HTML 通过不同的标签来标记不同的内容、格式、布局等，例如：</span></p><ul><li><img><span> 标签表示一张图片；</span></li><li><a><span> 标签表示一个链接；</span></li><li><table><span> 标签表示一个表格；</span></li><li><input><span> 标签表示一个输入框；</span></li><li><span>&lt;</span><span>p&gt;  标签表示一段文本；</span></li><li><strong><span> 标签表示文本加粗效果；</span></li><li><span>&lt;</span><span>div&gt; 标签表示块级布局。</span></li></ul><h4 id='总结'><span>总结</span></h4><p><span>HTML 是一种用来开发网页的计算机语言，它通过标签（标记式指令）将文本、音视频、图片、表格、按钮、输入框等内容显示出来。</span><strong><span>也就是说，HTML 是用来给网页内容进行排版和布局的。</span></strong></p><p>&nbsp;</p><p><img src="https://s2.loli.net/2022/03/03/wJj7mPUCpzDERfc.png" referrerpolicy="no-referrer" alt="image-20220303202322368"></p><h4 id='dhtml技术'><span>DHTML技术：</span></h4><p><img src="https://s2.loli.net/2022/03/03/dwo8DhVi2p9Q7CP.png" referrerpolicy="no-referrer" alt="image-20220303202718060"></p><p><img src="https://s2.loli.net/2022/03/03/Kj5R9LFZwq8APcC.png" referrerpolicy="no-referrer" alt="image-20220303202732080"></p><p><span>DHTML使HTML专注于文档结构整理，CSS来专注于信息的视觉表现。</span>
+<span>HTML+CSS，可使网页内容(Content)与表现(Design)完全分离，以更好的结构来展示信息，使信息易于展现并易于修改。</span></p><p><span>JavaScript 脚本语言，可以用来为Web增加交互性。</span></p><h4 id='html5和html'><span>HTML5和HTML:</span></h4><p><span>HTML代表超文本标记语言，用于使用标记语言设计网页。HTML是超文本和标记语言的组合，超文本定义了网页之间的链接；标记语言用于定义标记内的文本文档，该文档定义网页的结构。此语言用于注释（在计算机注释中）文本，以便机器可以理解它并相应地操作文本。【推荐阅读：</span><a href='http://html.cn/doc/html/'><span>html参考手册</span></a><span>】</span></p><p><span>大多数标记（例如HTML）语言都是人类可读的。该语言使用标签来定义必须对文本进行哪些操作。它用于在网页上构造和呈现内容。</span></p><p><span>HTML5是HTML的第五个版本，HTML5中删除或修改了许多元素。</span></p><h6 id='html和html5的区别'><span>HTML和HTML5的区别</span></h6><p><span>（1）HTML5支持SVG，画布和其他虚拟矢量图形，而在HTML中，只有将它与Flash，Silver-light等不同技术结合在一起才能使用矢量图形。</span></p><p><span>（2）HTML5使用Web SQL数据库，可用于临时存储数据但在HTML中只有浏览器缓存才可用于此目的。</span></p><p><span>（3）HTML5支持新的表单控件，例如：日期和时间，电子邮件，数字，范围，电话，网址，搜索等。</span></p><p><span>（4）HTML 5是否允许音频和视频控件以及标签，HTML不允许音频</span></p><p><span>（5）在HTML 5中，Doctype声明非常简单易用，Doctype声明在HTML中太长且复杂，html5:文档声明相对来说更为简便，有利于程序员快速阅读和开发。</span><!DOCTYPE html></p><p><span>（6）charset，async和ping的属性是HTML 5的一部分，HTML中不存在charset，async和ping等属性</span></p><p><span>（7）增强了对Web应用程序功能的支持：在HTML5允许浏览器作为应用程序平台运行不需要使用任何基于JS或Flash的方法，因为HTML5中固有的元素提供了所有功能。</span></p><p><span>（8）新增加</span><menu><span>和</span><menuitem><span>元素</span></p><h3 id='c开发工具'><span>c.开发工具：</span></h3><blockquote><p><span>		</span><span>只要是有编辑功能的编辑器，基本都可以用来开发html，甚至可以使用电脑自带的记事本、word等编辑器，只要记住把文档的后缀名改为.html就可以了。当然不建议使用比如记事本之类的编辑器，因为这类编辑器没有提示也没有格式，使用起来开发效率低。如果是刚开始学习的话，可以使用这种编辑器，会帮助你记忆（写多了自然就记住了）。</span></p><p><span>我平常主要使用vscode.通过安装插件vscode开发起html,cs,js等各种语言十分方便。</span></p><p><span>强烈推荐这个编辑器，通过安装插件可以开发前端，java，Python，c#,c/c++等各种语言，也可以用来开发Arduino,stm32,esp-idf等。</span></p></blockquote><h4 id='vscode配置教程'><span>Vscode配置教程：</span></h4><p><a href='https://blog.csdn.net/caohongxing/article/details/108632859' target='_blank' class='url'>https://blog.csdn.net/caohongxing/article/details/108632859</a><span> ||</span><a href='https://blog.csdn.net/caohongxing/article/details/108632859' target='_blank' class='url'>https://blog.csdn.net/caohongxing/article/details/108632859</a></p><p>&nbsp;</p><hr /><p>&nbsp;</p><h4 id='一visual-studio-code'><span>一、Visual Studio Code</span></h4><p><span>下载地址：</span><a href='https://code.visualstudio.com/' target='_blank' class='url'>https://code.visualstudio.com/</a></p><p><span>功能介绍：</span></p><p><span>微软在2015年4月30日Build 开发者大会上正式宣布了 Visual Studio Code 项目：一个运行于 Mac OS X、Windows和 Linux 之上的，针对于编写现代 Web 和云应用的跨平台源代码编辑器。</span></p><p><span>Visual Studio Code软件功能非常强大，界面简洁明晰、操作方便快捷，设计得很人性化。软件主要改进了文档视图，完善了对 Markdown的支持，新增PHP语法高亮。</span></p><p><img src="https://s2.loli.net/2022/03/03/mqxvW9BTEhF6PGz.png" referrerpolicy="no-referrer" alt="image-20220303205915676"></p><h4 id='二hbuilder'><span>二、hbuilder</span></h4><p><span>下载地址：</span><a href='http://www.dcloud.io/' target='_blank' class='url'>http://www.dcloud.io/</a></p><p><span>功能介绍：</span></p><p><span>前端开发小白入门首选，hbuilder是国产的一款前端开发工具而且是免费的，对于英语不好的前端工程师是一个不错的消息。</span></p><p><span>优点是有强大的其他语言支持和开发webapp等功能，强大到没朋友。在语法提示、转到定义、重构、调试等方面都非常高效。缺点也是有一些的，就是其有些稳定，有时可能会有些卡顿的现象</span></p><p><img src="https://s2.loli.net/2022/03/03/ciIdJRjqr7b3HBT.png" referrerpolicy="no-referrer" alt="image-20220303205759147"></p><h4 id='三sublime-text3'><span>三、sublime text3</span></h4><p><span>下载地址：</span><a href='http://www.sublimetext.com/' target='_blank' class='url'>http://www.sublimetext.com/</a></p><p><span>功能介绍：</span></p><p><span>sublime text是一个轻量级的编辑器，也是支持各种编程语言，sublime text所有的强大功能都是支持插件的，而且快捷键十分的好用，可以极大的减少开发的劳动程度，使用sublime就是要使用其快捷键和插件。</span></p><p><span>sublime text3的优点的轻量级但是功能强大，优雅小巧启动速度快，有着丰富的第三方支持，能够满足各种各样的扩展缺点是对于项目的管理等不是很方便，但代码提示不如hubuilder强大。</span></p><p><img src="https://s2.loli.net/2022/03/03/FwYHoEda6b34KLm.png" referrerpolicy="no-referrer" alt="image-20220303210220430"></p><h4 id='四webstorm'><span>四、WebStorm</span></h4><p><span>下载地址：</span><a href='https://www.jetbrains.com/webstorm/' target='_blank' class='url'>https://www.jetbrains.com/webstorm/</a></p><p><span>功能介绍：</span></p><p><span>WebStorm 是jetbrains公司旗下一款JavaScript 开发工具。官方提供的插件支持，满足许多不会配置的同学，ESlint，词法高亮，emmet，CSS预处理器，新版本也添加了对ES6的支持，内建了服务器调试。</span></p><p><span>目前已经被广大中国JS开发者誉为“Web前端开发神器”、“最强大的HTML5编辑器”、“最智能的JavaScript IDE”等。与IntelliJ IDEA同源，继承了IntelliJ IDEA强大的JS部分的功能。</span></p><p><img src="https://s2.loli.net/2022/03/03/qWgGm431aETsdJF.png" referrerpolicy="no-referrer" alt="image-20220303205823471"></p><h4 id='五atom'><span>五、Atom</span></h4><p><span>下载地址：</span><a href='https://atom.io/' target='_blank' class='url'>https://atom.io/</a></p><p><span>功能介绍：</span></p><p><span>Atom 是github专门为程序员推出的一个跨平台文本编辑器。平易近人,但可删节的核心工具定制做任何事,也可以使用有效不沾一个配置文件。为开源而生。</span></p><p><span>具有简洁和直观的图形用户界面，并有很多有趣的特点：支持CSS，HTML，JavaScript等网页编程语言。它支持宏，自动完成分屏功能，集成了文件管理器。</span></p><p><img src="https://s2.loli.net/2022/03/03/xCMBUGHSuF4WcA3.png" referrerpolicy="no-referrer" alt="image-20220303205833749"></p><h4 id='六-dreamweaver-cc-2017'><span>六 ：Dreamweaver CC 2017</span></h4><p><span>下载地址：</span><a href='https://www.adobe.com/products/dreamweaver.html' target='_blank' class='url'>https://www.adobe.com/products/dreamweaver.html</a></p><p><span>功能介绍：</span></p><p><span>老牌的IDE ，曾经以PS+DW+FW称霸网页领域，号称网页三剑客，然而之前的版本更新较慢，版本陈旧，已经满足不了广大前端开发者的项目需求，逐渐被市场淘汰。</span></p><p><span>好在2017版本及时修正，外观、界面、语法高亮等已经很漂亮，并且添加了CSS预处理器支持，同时保留了部分预制组件，方便对语法还不熟悉的同学，对于不会node的同学也有提供实时预览，适合对前端有进一步了解的同学。</span></p><p><img src="C:\Users\immortal\AppData\Roaming\Typora\typora-user-images\image-20220303205849362.png" referrerpolicy="no-referrer" alt="image-20220303205849362"></p><h3 id='d学习方法与资料'><span>d.学习方法与资料：</span></h3><blockquote><p><span>学习html很简单，就是学习一些标签的用法，但是需要我们多写，多练才能熟悉，才能灵活的应用。</span></p></blockquote><p><span>一些好用的学习网站:</span></p><ul><li><span>W3school:</span><a href='https://www.w3school.com.cn/html/index.asp' target='_blank' class='url'>https://www.w3school.com.cn/html/index.asp</a></li><li><span>菜鸟教程：</span><a href='https://www.runoob.com/html/html-tutorial.html' target='_blank' class='url'>https://www.runoob.com/html/html-tutorial.html</a></li><li><span>c语言中文网：</span><a href='http://c.biancheng.net/html/' target='_blank' class='url'>http://c.biancheng.net/html/</a></li></ul><p>&nbsp;</p><h2 id='2浏览器开发者工具使用'><span>2.浏览器开发者工具使用：</span></h2><p>&nbsp;</p><p>&nbsp;</p><h2 id='3html基本语法'><span>3.HTML基本语法：</span></h2><p><span>Html标签语法简单，本次课程通过菜鸟教程网站进行HTML5基本语法教学，选择性的讲解常用的html标签，帮助大家节省初次学习的时间，课程结束后可根据需要自己按需进行学习。</span></p><p><a href='https://www.runoob.com/html/html-tutorial.html' target='_blank' class='url'>https://www.runoob.com/html/html-tutorial.html</a></p><h2 id='4http协议'><span>4.Http协议：</span></h2><h3 id='a网络通讯原理'><span>a.网络通讯原理：</span></h3><p><strong><span>学习资料：</span></strong><a href='https://www.cnblogs.com/zyx110/p/11891335.html' target='_blank' class='url'>https://www.cnblogs.com/zyx110/p/11891335.html</a></p><p><span>计算机网络是由通信介质将地理位置不同的且相互独立的计算机连接起来，实现数据通信与资源共享。互联网的本质就是一系列的协议，总称为‘互联网协议’（Internet Protocol Suite).互联网协议的功能：定义计算机如何接入internet，以及接入internet的计算机通信的标准。</span></p><p><span>互联网协议按照功能的不同，分为 osi 七层， tcp / ip 五层， tcp / ip 四层协议。如下图：</span></p><p><img src="https://s2.loli.net/2022/03/03/xcz65KtPUAI8F3k.png" referrerpolicy="no-referrer" alt="image-20220303223109565"></p><p>&nbsp;</p><p><strong><span>OSI七层协议数据传输的封包与解包过程</span></strong></p><p><img src="https://s2.loli.net/2022/03/03/1cOHP2CXZByKhQn.gif" referrerpolicy="no-referrer"></p><p><strong><span>osi 的七层协议体系结构的概念清楚，理论也比较完善，但它既复杂又不实用， ISO 制定的 osi 协议参考模型的过于庞大、复杂招致了许多批评。于此对照，由技术人员自己开发的 TCP / IP 协议获得了更为广泛的应用。因此，我们只需要弄明白 TCP / IP 五层协议 就能了解和明白计算机最底层的通信是怎么回事。</span></strong></p><h5 id='tcpip五层协议'><span>TCP/IP五层协议</span></h5><p><img src="https://s2.loli.net/2022/03/03/l9NapIUSkHtnC3Z.png" referrerpolicy="no-referrer" alt="image-20220303223350905"></p><p><span>如图，从最下方的物理层到最上方的应用层，对于我们用户而言，最直接的是应用层。从上到下每一层都依赖于下一层</span></p><h3 id='btcpip协议族'><span>b.TCP/IP协议族：</span></h3><p><span>互联网协议族（Internet Protocol Suite，缩写IPS）是一个网络通信模型，以及一整个网络传输协议家族，为互联网的基础通信架构。它常被通称为TCP/IP协议族（TCP/IP Protocol Suite，或TCP/IP Protocols），简称TCP/IP。</span></p><p><span>TCP/IP 模型包含了 TCP、IP、UDP、Telnet、FTP、SMTP 等上百个互为关联的协议，其中 TCP 和 IP 是最常用的两种底层协议，所以把它们统称为“TCP/IP 协议族”。</span></p><p><img src="https://s2.loli.net/2022/03/03/MbKZu8E2BD5LSvA.png" referrerpolicy="no-referrer" alt="image-20220303223835617"></p><p><img src="https://s2.loli.net/2022/03/03/XPpAM9qLcsJf7KU.png" referrerpolicy="no-referrer" alt="image-20220303223855051"></p><p><span>在上面，通常我们是把TCP/IP协议族分为四层，但是如果是五层的话就是在链路层下再加个物理层。下面是对各层的详细介绍。</span></p><p><img src="https://s2.loli.net/2022/03/03/flQ8d4Tm5BsFarv.png" referrerpolicy="no-referrer" alt="image-20220303224035631"></p><p><img src="https://s2.loli.net/2022/03/03/4SEq6yvV7z38dC1.png" referrerpolicy="no-referrer" alt="image-20220303224154206"></p><p><span>如上图所示，当应用程序采用TCP传送数据时，数据被送入协议栈中，然后，通过每一层直到被当做一串比特流传入网络中。其中每一层收到数据都会对数据增加一些首部信息（有的还需要尾部信息）。TCP传给IP的数据单元称为TCP报文段或简称为TCP段（UDP传给IP的数据单元称为UDP数据段），IP传给网络接口层的数据单元称为IP数据报。通过以太网传输的比特流称为帧。</span></p><p><span>当目的主机收到了一个以太网的数据帧时，数据要从协议栈中，由底往上，同时去掉各层协议上的报文首部，如下图所示：</span></p><p><img src="https://s2.loli.net/2022/03/03/XLrgfIAevwknQzO.png" referrerpolicy="no-referrer" alt="image-20220303224238944"></p><p>&nbsp;</p><h3 id='cscoket'><span>c.Scoket:</span></h3><p><span>学习资料：</span><a href='http://c.biancheng.net/view/2123.html' target='_blank' class='url'>http://c.biancheng.net/view/2123.html</a></p><p><img src="https://s2.loli.net/2022/03/03/JSidQWUKRBZFPej.png" referrerpolicy="no-referrer" alt="image-20220303224731252"></p><h4 id='什么是socket'><span>什么是Socket?:</span></h4><p><span>		</span><span>socket 的原意是“插座”，在计算机通信领域，socket 被翻译为“套接字”，它是计算机之间进行通信的一种约定或一种方式。通过 socket 这种约定，一台计算机可以接收其他计算机的数据，也可以向其他计算机发送数据。</span></p><p><span>		</span><span>socket 的典型应用就是 Web 服务器和浏览器：浏览器获取用户输入的 URL，向服务器发起请求，服务器分析接收到的 URL，将对应的网页内容返回给浏览器，浏览器再经过解析和渲染，就将文字、图片、视频等元素呈现给用户。</span></p><p><span>		</span><span>简单来说，就是操作系统实现了TCP/IP协议族的各种通讯协议，然后通过Socket这个接口开放给用户，使用户和应用程序具有访问网络的能力。</span></p><p><img src="https://s2.loli.net/2022/03/03/iHgURtzuoDnNQbh.png" referrerpolicy="no-referrer" alt="image-20220303225239399"></p><p><span>Socket是应用层与TCP/IP协议族通信的中间软件抽象层，它是一组接口。在设计模式中，Socket其实就是一个门面模式，它把复杂的TCP/IP协议族隐藏在Socket接口后面，对用户来说，一组简单的接口就是全部，让Socket去组织数据，以符合指定的协议。</span></p><h4 id='socket使用教程'><span>Socket使用教程：</span></h4><p><img src="https://s2.loli.net/2022/03/03/XJIhFr7BTPy4f6V.png" referrerpolicy="no-referrer" alt="image-20220303225955305"></p><p><span>先从服务器端说起。服务器端先初始化Socket，然后与端口绑定(bind)，对端口进行监听(listen)，调用accept阻塞，等待客户端连接。在这时如果有个客户端初始化一个Socket，然后连接服务器(connect)，如果连接成功，这时客户端与服务器端的连接就建立了。客户端发送数据请求，服务器端接收请求并处理请求，然后把回应数据发送给客户端，客户端读取数据，最后关闭连接，一次交互结束。</span></p><h4 id='socket作用'><span>Socket作用：</span></h4><ul><li><span>所谓进程指的是：运行的程序以及运行时用到的资源这个整体称之为进程</span></li></ul><ul><li><span>所谓进程间通信指的是：运行的程序之间实现数据共享和传递</span></li></ul><p><span>socket(简称 套接字) 是最通用的进程间通信的一种方式，它与其他进程间通信的一个主要不同是：</span></p><p><strong><span>它能实现不同主机间的进程间通信</span></strong><span>，我们网络上各种各样的服务大多都是基于 Socket 来完成通信的</span></p><p><span>例如我们每天浏览网页、QQ 聊天、收发 email 等等</span></p><h3 id='d常用的http协议'><span>d.常用的Http协议：</span></h3><blockquote><p><span>Http协议是基于TCP的，主要用于web的一种应用层协议</span></p></blockquote><h4 id='http协议简介'><span>http协议简介：</span></h4><p><span>超文本传输协议（英文：</span><strong><span>H</span></strong><span>yper</span><strong><span>T</span></strong><span>ext </span><strong><span>T</span></strong><span>ransfer </span><strong><span>P</span></strong><span>rotocol，缩写：HTTP）是一种用于分布式、协作式和超媒体信息系统的应用层协议。HTTP是万维网的数据通信的基础。</span></p><p><span>HTTP的发展是由蒂姆·伯纳斯-李于1989年在欧洲核子研究组织（CERN）所发起。HTTP的标准制定由万维网协会（World Wide Web Consortium，W3C）和互联网工程任务组（Internet Engineering Task Force，IETF）进行协调，最终发布了一系列的RFC，其中最著名的是1999年6月公布的 RFC 2616，定义了HTTP协议中现今广泛使用的一个版本——HTTP 1.1。</span></p><p><span>2014年12月，互联网工程任务组（IETF）的Hypertext Transfer Protocol Bis（httpbis）工作小组将HTTP/2标准提议递交至IESG进行讨论，于2015年2月17日被批准。 HTTP/2标准于2015年5月以RFC 7540正式发表，取代HTTP 1.1成为HTTP的实现标准。</span></p><p><span>HTTP是一个客户端终端（用户）和服务器端（网站）请求和应答的标准（TCP）。通过使用网页浏览器、网络爬虫或者其它的工具，客户端发起一个HTTP请求到服务器上指定端口（默认端口为80）。我们称这个客户端为用户代理程序（user agent）。应答的服务器上存储着一些资源，比如HTML文件和图像。我们称这个应答服务器为源服务器（origin server）。在用户代理和源服务器中间可能存在多个“中间层”，比如代理服务器、网关或者隧道（tunnel）。</span></p><p><span>尽管TCP/IP协议是互联网上最流行的应用，HTTP协议中，并没有规定必须使用它或它支持的层。事实上，HTTP可以在任何互联网协议上，或其他网络上实现。HTTP假定其下层协议提供可靠的传输。因此，任何能够提供这种保证的协议都可以被其使用。因此也就是其在TCP/IP协议族使用TCP作为其传输层。</span></p><p><span>通常，由HTTP客户端发起一个请求，创建一个到服务器指定端口（默认是80端口）的TCP连接。HTTP服务器则在那个端口监听客户端的请求。一旦收到请求，服务器会向客户端返回一个状态，比如&quot;HTTP/1.1 200 OK&quot;，以及返回的内容，如请求的文件、错误消息、或者其它信息。</span></p><hr /><p><span>在浏览器地址栏键入URL，按下回车之后会经历以下流程：</span></p><ol><li><span>浏览器向 DNS 服务器请求解析该 URL 中的域名所对应的 IP 地址;</span></li><li><span>解析出 IP 地址后，根据该 IP 地址和默认端口 80，和服务器建立TCP连接;</span></li><li><span>浏览器发出读取文件(URL 中域名后面部分对应的文件)的HTTP 请求，该请求报文作为 TCP 三次握手的第三个报文的数据发送给服务器;</span></li><li><span>服务器对浏览器请求作出响应，并把对应的 html 文本发送给浏览器;</span></li><li><span>释放 TCP连接;</span></li><li><span>浏览器将该 html 文本并显示内容; 　</span></li></ol><h4 id='http协议格式'><span>HTTP协议格式：</span></h4><h5 id='请求格式'><span>请求格式：</span></h5><p><img src="https://s2.loli.net/2022/03/03/bmayBPNvInKh37U.png" referrerpolicy="no-referrer" alt="image-20220303232330788"></p><p><span>HTTP 的请求报文由三部分构成：</span></p><ul><li><strong><span>请求行</span></strong><span>：由请求方法（Method）、URL 字段和 HTTP 的协议版本组成，注意其中的空格、回车符和换行符均不可省略，所以我们的请求方法实际上就是位于请求行中的了。</span></li></ul><ul><li><strong><span>请求头部</span></strong><span>：位于请求行之后，个数可以为 0~若干个，每个请求头部都包含一个头部字段名和一个值，它们之间用冒号 &quot;:&quot; 分隔，在最后用回车符和换行符表示结束。</span></li></ul><ul><li><strong><span>请求数据</span></strong><span>：如果请求方法为 </span><strong><span>GET</span></strong><span>，那么请求数据为空。它主要是在 </span><strong><span>POST</span></strong><span> 中进行使用，适用于需要填表单（FORM）的场景。我们通过一个实际的例子来看看 </span><strong><span>HTTP</span></strong><span> 的 </span><strong><span>GET</span></strong><span> 请求报文是什么样的，我们这里以访问 api.github.com/search/users?q=JakeWharton为例，通过抓包我们得到的请求报文如下所示：</span></li></ul><p><img src="https://s2.loli.net/2022/03/03/ieEjqB8fT3I7bJU.png" referrerpolicy="no-referrer" alt="image-20220303232348577"></p><p><span>请求头里面的内容举个例子：这个length表示请求体里面的数据长度，其他的请求头里面的这些键值对，陆续我们会讲的，大概知道一下就可以了，其中有一个user-agent，算是需要你记住的吧，就是告诉你的服务端，我是用什么给你发送的请求。</span></p><h5 id='响应格式'><span>响应格式：</span></h5><p><img src="https://s2.loli.net/2022/03/03/jbXckhwVd4DYaBO.png" referrerpolicy="no-referrer" alt="image-20220303232516838"></p><p><img src="https://s2.loli.net/2022/03/03/YNIz9wlXu8f6BMH.png" referrerpolicy="no-referrer" alt="image-20220303232540390"></p><p><img src="https://s2.loli.net/2022/03/03/y6JOrg7VCklKhNq.png" referrerpolicy="no-referrer" alt="image-20220303233505506"></p><p><strong><span>请求方法（所有方法全为大写）有多种，各个方法的解释如下：</span></strong>
+<strong><span>GET</span></strong><span>   请求获取Request-URI所标识的资源</span>
+<strong><span>POST</span></strong><span>  在Request-URI所标识的资源后附加新的数据</span>
+<span>HEAD  请求获取由Request-URI所标识的资源的响应消息报头</span>
+<span>PUT   请求服务器存储一个资源，并用Request-URI作为其标识</span>
+<span>DELETE 请求服务器删除Request-URI所标识的资源</span>
+<span>TRACE  请求服务器回送收到的请求信息，主要用于测试或诊断</span>
+<span>CONNECT 保留将来使用</span>
+<span>OPTIONS 请求查询服务器的性能，或者查询与资源相关的选项和需求</span>
+<span>应用举例：</span>
+<span>GET方法：在浏览器的地址栏中输入网址的方式访问网页时，浏览器采用GET方法向服务器获取资源，eg:GET /form.html HTTP/1.1 (CRLF)</span></p><p><span>POST方法要求被请求服务器接受附在请求后面的数据，常用于提交表单。</span>
+<span>eg：POST /reg.jsp HTTP/ (CRLF)</span>
+<span>Accept:image/gif,image/x-xbit,... (CRLF)</span>
+<span>...</span>
+<span>HOST:</span><a href='http://www.guet.edu.cn' target='_blank' class='url'>www.guet.edu.cn</a><span> (CRLF)</span>
+<span>Content-Length:22 (CRLF)</span>
+<span>Connection:Keep-Alive (CRLF)</span>
+<span>Cache-Control:no-cache (CRLF)</span>
+<span>(CRLF)     //该CRLF表示消息报头已经结束，在此之前为消息报头</span>
+<span>user=jeffrey&amp;pwd=1234 //此行以下为提交的数据</span></p><p><span>HEAD方法与GET方法几乎是一样的，对于HEAD请求的回应部分来说，它的HTTP头部中包含的信息与通过GET请求所得到的信息是相同的。利用这个方法，不必传输整个资源内容，就可以得到Request-URI所标识的资源的信息。该方法常用于测试超链接的有效性，是否可以访问，以及最近是否更新。</span></p><blockquote><p><span>最常用的就是GET和POST请求</span></p></blockquote><p>&nbsp;</p><h2 id='5html在嵌入式中的应用'><span>5.Html在嵌入式中的应用</span></h2><h3 id='a为什么使用html'><span>a.为什么使用Html?</span></h3><blockquote><p><span>大家平时在使用单片机进行编程时，经常会遇到</span><strong><span>显示</span></strong><span>，</span><strong><span>控制</span></strong><span>和</span><strong><span>调试</span></strong><span>三个问题，即对单片机结果的展示，如何对单片机实施控制以及程序运行时对参数和程序的调试。以Stm32为例，显示可以采用OLED屏或LCD彩屏，控制可以采用按键或者电阻触摸屏，调试采用串口调试参数或者按键调试参数，对新手来说，采用以上方法可能有一些难度，在传统的前后台编程模式中，以上三个模块加入程序会增加程序的复杂度，可能会带来一系列的问题。</span></p></blockquote><p><span>大家在平时做应用时，如果涉及到人机交互，可以考虑使用串口屏，串口屏内部集成了显示屏的驱动程序，MCU可以通过串口来实现显示，控制，和调试三个行为。但这种做法的唯一缺点就是串口屏幕的价格较高。同时，如果程序十分复杂的话，可以考虑在stm32上应用RTOS实时操作系统，简化编程难度，提高程序的执行效率。</span></p><p><span>针对使用串口屏价格较高，直接驱动LCD屏难以做出美观界面的问题。大家在平时的应用中可以考虑使用网页的形式来做人机交互。</span></p><h4 id='如何使用'><span>如何使用？</span></h4><ul><li><span>ESP32官网教程：</span><a href='https://docs.espressif.com/projects/esp-idf/zh_CN/latest/esp32/get-started/index.html' target='_blank' class='url'>https://docs.espressif.com/projects/esp-idf/zh_CN/latest/esp32/get-started/index.html</a></li></ul><ul><li><span>Micropython教程：</span><a href='http://www.micropython.com.cn/en/latet/library/index.html' target='_blank' class='url'>http://www.micropython.com.cn/en/latet/library/index.html</a></li></ul><p><span>Esp32内置了lwip这个轻量级的TCP/IP协议栈；前面我们说过Socket是应用层与TCP/IP协议族通信的中间软件抽象层，因此我们可以在esp32上进行socket编程来使用tcp/udp等协议，而http又是基于TCP协议的，因此我们可以在esp32上使用HTTP协议来与手机或者电脑上的浏览器传递信息。</span></p><blockquote><p><span>lwIP是一套在MCU层级上用C实现的IP协议栈，可以运行在裸机/RTOS/嵌入式Linux，乐鑫为ESP32提供了相关移植包</span></p><p><span>MIPS(Million Instructions Per Second)：单</span><a href='https://baike.baidu.com/item/字长'><span>字长</span></a><span>定点指令平均执行速度 Million Instructions Per Second的缩写，每秒处理的百万级的</span><a href='https://baike.baidu.com/item/机器语言/2019225'><span>机器语言</span></a><span>指令数。这是衡量CPU速度的一个指标。</span></p><p><span>BLE是低功耗蓝牙的英文缩写（Bluetooth Low Energy），是蓝牙4.0版本起开始支持的新的、低功耗版本的蓝牙技术规范。</span></p></blockquote><p><span>ESP32是由我国的乐鑫公司设计研发的一款可作为独立系统运行应用程序或是主机 MCU 的从设备，通过 SPI / SDIO 或 I2C / UART 接口提供 Wi-Fi 和蓝牙功能。该芯片专为移动设备、可穿戴电子产品和物联网应用而设计，具有业内高水平的低功耗性能，包括精细分辨时钟门控、省电模式和动态电压调整等。其次ESP32将天线开关、RF balun、功率放大器、接收低噪声放大器、滤波器、电源管理模块等功能集于一体，这使得ESP32 只需极少的外围器件，即可实现强大的处理性能、可靠的安全性能，和 Wi-Fi &amp; 蓝牙功能。同时，ESP32 具备极其稳定的性能，工作温度范围达到 –40°C 到 +125°C。集成的自校准电路实现了动态电压调整，可以消除外部电路的缺陷并适应外部条件的变化。</span></p><p><span>Esp32</span></p><p><img src="https://s2.loli.net/2022/03/04/yaOwUYQs6L9vMIq.png" referrerpolicy="no-referrer" alt="image-20220304162059054"></p><p><span>ESP32 有丰富的资源，Xtensa® 32-bitLX6单/双核处理器，运算能力高达600MIPS（除ESP32-S0WD为200MIPS，ESP32-D2WD 为 400 MIPS），拥有448K ROM，</span><strong><span>520KB SRAM</span></strong><span>，34个 GPIO端口。</span></p><p><span>除了常规单片机资源外，吸引我的主要是以下资源：</span></p><p><span>· WIFI模块，支持 2.4G 频段</span></p><p><span>· 蓝牙模块，支持 BLE 和经典蓝牙</span></p><p><span>· CAN 控制器，外接一个 CAN收发器便可以实现汽车以及工业使用的CAN总线</span></p><p><span>· Touch Sensor，拥有 9个GPIO支持作为电容触摸输入使用，不需要单独配置触摸传感器</span></p><p><span>原始的FreeRTOS设计为在单个内核上运行。但是ESP32是双核，包含协议CPU（称为CPU 0或PRO_CPU）和应用程序CPU（称为CPU 1或APP_CPU）。这两个内核实际上是相同的，并且共享相同的内存。这允许两个内核在它们之间交替运行任务。</span></p><blockquote><p><span>FreeRTOS,可以分为两部分Free和RTOS, Free就是免费的、自由的、不受约束的意思, RTOS全称是Real Time Operating System,中文名就是实时操作系统。可以看出FreeROTS就是一个免费的RTOS类系统。这里要注意, RTOS不是指某一个确定的系统,而是指一类系统。比如uC/os, FreeRTOS, RTX, RT-Thread等这些都是RTOS类操作系统。操作系统允许多个任务同时运行,这个叫做多任务,实际上,一个处理器核心在某一时刻只能运行一个任务。操作系统中任务调度器的责任就是决定在某一时刻究竟运行哪个任务,任务调度在各个任务之间的切换非常快!这就给人们造成了同一时刻有多个任务同时运行的错觉。操作系统的分类方式可以由任务调度器的工作方式决定,比如有的操作系统给每个任务分配同样的运行时间,时间到了就轮到下一个任务, Unix操作系统就是这样的。RTOS的任务调度器被设计为可预测的,而这正是嵌入式实时操作系统所需要的,实时环境中要求操作系统必须对某一个事件做出实时的响应,因此系统任务调度器的行为必须是可预测的。像FreeRTOS这种传统的RTOS类操作系统是由用户给每个任务分配一个任务优先级,任务调度器就可以根据此优先级来决定下一刻应该运行哪个任务。FreeRTOS是RTOS系统的一种, FreeRTOS十分的小巧,可以在资源有限的微控制器中运行,当然了, FreeRTOS不仅局限于在微控制器中使用。但从文件数量上来看FreeRTOS要比uC/OSII和uC/OSII小的多。</span></p><p><span>【翻译自官网】普通的FreeRTOS运行在单核上，不彳亍！我们的ESP32-FreeRTOS能运行在双核，彳亍！</span></p><p><span>众所周知，ESP32是物美价廉的双核SoC，CPU0和CPU1同时运行、共享内存。乐鑫修改了普通的FreeRTOS，让它能够支持SMP（symmetric multiprocessing对称多处理），所以ESP32的FreeRTOS变成了基于FreeRTOS v8.2.0的Xtensa架构移植版SMP RTOS</span></p><p><strong><span>下面对移植版的FreeRTOS简称为SMP RTOS</span></strong><span>，</span></p><p><span>【补充】对称多处理（SMP）架构是一种两个或多个CPU共享同一内存公共链路的计算机体系结构</span></p><p><em><span>他改变了FreeRTOS</span></em></p></blockquote><p><strong><span>ESP32内嵌 FreeRTOS操作系统</span></strong><span>，可以支持多任务编程，因此我们可以使用两个进程，一个进程进行正常的工作，另一个进程专门用来进行http协议的处理。</span></p><h5 id='通讯流程'><span>通讯流程：</span></h5><p><img src="https://s2.loli.net/2022/03/04/6nDfsHuryZdBMpl.png" referrerpolicy="no-referrer" alt="image-20220304185020099"></p><ul><li><span>浏览器端处理：可以使用js的setInterval设置定时时间来执行相应的函数，或者通过事件的方式执行函数，发送http请求可以使用XMLHttpReq。</span></li><li><span>MCU端处理：通过micropython的 _thread模块新建一个进程来单独负责http请求的处理，调用accept()函数后，线程被阻塞，当浏览器发起http请求时，先与MCU的80端口建立连接，然后发送HTTP请求头，控制信息可以包含在http请求头中，方便esp32端进行处理。</span></li></ul><h5 id='esp32常用编程方式'><span>ESP32常用编程方式：</span></h5><ul><li><span>ESP-IDF： 采用c/c++的语法进行编程，官方推荐，优点是灵活，官方文档上的各种API比较多。</span></li><li><span>Micropython: Esp32需要刷入相应固件，人生苦短，我用python，优点不多说。但我使用的时候发现如果使用micropython的话好像不能发挥esp32的全部性能？在micropython中可以使用的内存变小了好多。</span></li><li><span>Arduino: 使用c/c++语法编程，简单易用，Arduino平台上的各种开源库让你十分方便就能做出各种炫酷的应用。</span></li></ul><h3 id='besp32-micropython示例'><span>b.Esp32 Micropython示例</span></h3><p><span>以灯哥开源四足机器人项目控制程序为例：</span></p><p><span>项目开源地址 Github:</span><a href='https://github.com/ToanTech/py-apple-quadruped-robot' target='_blank' class='url'>https://github.com/ToanTech/py-apple-quadruped-robot</a></p><p><img src="https://s2.loli.net/2022/03/04/oHpnJTLhf2lEqD7.png" referrerpolicy="no-referrer" alt="image-20220304190750266"></p><h2 ></h2><p>&nbsp;</p><p>&nbsp;</p><h2 id='6个人网站搭建流程'><span>6.个人网站搭建流程</span></h2><blockquote><p><span>Linux服务器环境搭建可以参考我原来写过的一篇文章：</span><a href='http://www.gonghaojing.top:8080/archives/linux-yuan-cheng-fu-wu-qi-huan-jing-da-jian' target='_blank' class='url'>http://www.gonghaojing.top:8080/archives/linux-yuan-cheng-fu-wu-qi-huan-jing-da-jian</a></p></blockquote><h3 id='a云服务器选型'><span>a.云服务器选型：</span></h3><p><span> 云服务器是一台部署在云端的一台远程主机，通过ssh协议可以想在本地一样使用云服务器。</span><strong><span>ssh协议</span></strong><span>属于TCP/IP协议族中的一种用于远程登录的安全的通讯协议，它位于体系结构中的应用层，实际是使用Tcp协议进行通讯。常见的远程登录有telnet和ssh两种，但</span><strong><span>ssh</span></strong><span>协议是十分安全的，因为它在通讯的过程中，会对需要通讯的消息进行加密，实际传输的都是密文，十分安全，故而经常用于远程控制服务器。</span></p><p><span> 拥有一台远程服务器是很酷的一件事情，拥有一台服务器可以干许多事情，例如</span><strong><span>搭建一台MQTT服务器</span></strong><span>，然后可以使用ESP8266或ESP32等芯片轻松实现物联网应用。</span><strong><span>搭建一台Frp服务</span></strong><span>，轻松实现内网穿透，解决众多小伙伴没有公网ip的烦恼。</span><strong><span>搭建一台Mysql服务器</span></strong><span>,实现数据的远程存储。</span><strong><span>配置Tomcat服务器</span></strong><span>,搭建个人网站或博客，或者搭建一台</span><strong><span>我的世界</span></strong><span>服务器等等...</span></p><p><span> 现在网上有许多服务器的供应商，例如阿里云，腾讯云等，每个平台新用户或双十一的时候都有巨大折扣。购买服务器时主要看</span><strong><span>三个指标</span></strong><span>：</span><strong><span>1.性能指标：</span></strong><span>例如1核2G或2核4G,主要体现云服务器的性能。</span><strong><span>2.带宽：</span></strong><span>带宽也是一个很重要的指标，带宽除以8就是实际的最大网速，对于网站，游戏服务器等并发量可能会比较大的应用，需要选取合适的带宽。</span><strong><span>3，是否是境外服务器</span></strong><span>:对于境外服务器，搭建网站的时候不需要备案，如何时境内的，根据相关法律法规的要求，必须要进行备案。ps:网站备案程序十分麻烦，建议早做准备，我前段时间为我的域名备案，一顿操作后还让我苦等了半个月，其中艰辛不足为外人道也。。。如果是境外服务器还可以搭建梯子，frp就可以实现Socket代理和http代理，实现科学上网。但境外服务器的价格普遍比国内服务器的价格贵许多。</span></p><p><span>腾讯云：</span><a href='https://cloud.tencent.com/' target='_blank' class='url'>https://cloud.tencent.com/</a></p><p><span>阿里云：</span><a href='https://cn.aliyun.com/' target='_blank' class='url'>https://cn.aliyun.com/</a></p><h3 id='b域名购买及解析'><span>b.域名购买及解析：</span></h3><p><span>配置好域名解析后可以通过域名直接访问到主机，免得去记忆主机ip。正常情况下，解析成功后80端口的网站是不能访问的，需要网站需要域名备案后才能访问。</span></p><p><span>腾讯云：</span><a href='https://buy.cloud.tencent.com/domain' target='_blank' class='url'>https://buy.cloud.tencent.com/domain</a></p><h3 id='c网站搭建'><span>c.网站搭建：</span></h3><p><span>Tomcat服务器教程：</span><a href='https://blog.csdn.net/heyeqingquan/article/details/96437921' target='_blank' class='url'>https://blog.csdn.net/heyeqingquan/article/details/96437921</a></p><h4 id='个人网站'><span>个人网站：</span></h4><blockquote><p><span>个人网站。可以采用网上下载建站模板，自己修改的方式。零基础也可以迅速开发出精美的网站。</span></p></blockquote><ul><li><span>站长之家：</span><a href='https://sc.chinaz.com/moban/' target='_blank' class='url'>https://sc.chinaz.com/moban/</a></li><li><span>第一模板网：</span><a href='https://www.11moban.com/grmb/index' target='_blank' class='url'>https://www.11moban.com/grmb/index</a></li><li><span>网站模板库：</span><a href='http://www.baisheng999.com/' target='_blank' class='url'>http://www.baisheng999.com/</a></li><li><span>英文的模板库：</span><a href='https://html5up.net/' target='_blank' class='url'>https://html5up.net/</a></li><li><span>网页插件库：</span><a href='http://www.htmleaf.com/html5/html' target='_blank' class='url'>http://www.htmleaf.com/html5/html</a></li></ul><h4 id='个人博客'><span>个人博客：</span></h4><blockquote><p><span>个人博客。可以使用WordPress或者基于Java的halo博客工具，快速开发出自己的博客。</span></p></blockquote><ul><li><span>Halo官网：</span><a href='https://halo.run/' target='_blank' class='url'>https://halo.run/</a></li><li><span>Halo美化教程：</span><a href='https://bestzuo.cn/posts/halo-beauty.html#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2' target='_blank' class='url'>https://bestzuo.cn/posts/halo-beauty.html#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2</a></li></ul><h3 id='d备案'><span>d.备案：</span></h3><p><span>一般在域名服务商那里都会有代备案系统</span></p><h4 id='icp备案'><span>ICP备案：</span></h4><p><span>ICP备案的目的就是为了防止在网上从事非法的网站经营活动，打击不良互联网信息的传播，如果网站不备案的话，很有可能被查处以后关停。根据中华人民共和国信息产业部第十二次部务会议审议通过的《非经营性互联网信息服务备案管理办法》条例，在中华人民共和国境内提供非经营性互联网信息服务，应当办理备案。未经备案，不得在中华人民共和国境内从事非经营性互联网信息服务。而对于没有备案的网站将予以罚款或关闭。</span></p><h4 id='公安备案'><span>公安备案：</span></h4><p><span>网站备案是根据国家法律法规需要网站的所有者向国家有关部门申请的备案，公安局备案是其中一种。公安局备案一般按照各地公安机关指定的地点和方式进行，操作流程会比ICP备案流程简单，主要是已登记为主。</span></p><p><img src="https://s2.loli.net/2022/03/04/bI7s3zBMyVRJUaq.png" referrerpolicy="no-referrer" alt="image-20220304192337538"></p><p><span>以百度官网为例，其中</span><code>京公安网备11000002000001</code><span>就是公安备案，</span><code>京ICP证030173号</code><span>就是ICP备案</span></p><h3 id='ecnzz站长工具'><span>e.CNZZ站长工具：</span></h3><p><strong><span>该站长工具可以通过在你的网页中添加链接，从而对访问网页的人数，频率等进行统计。</span></strong></p><p><span>CNZZ（ </span><a href='http://www.cnzz.com' target='_blank' class='url'>http://www.cnzz.com</a><span>）是全球最大的中文互联网数据统计分析服务提供商，为中文网站及中小企业提供专业、权威、独立的第三方数据统计与分析服务。目前累计超过400万家网站采用了CNZZ提供的流量统计服务，一周覆盖90%以上的上网用户。</span></p><p><span>CNZZ站长统计和全景统计是两款专业的实时网站流量统计分析系统，可以帮助网站管理员、运营人员、推广人员等实时获取网站流量，并从流量来源、网站内容、网站访客特性等多方面提供网站分析的数据依据。从而帮助您提高网站流量，提升网站的用户体验，让访客更多的沉淀下来变成会员或客户，通过更少的投入获取最大化的收入。</span></p><p><span>通过简单的几步操作，安装CNZZ统计代码，您就可以实时获得多达几十种的网站数据报告，且所有的报告按照网站数据分析思路一气呵成。网站分析领域的统计指标在CNZZ统计中都可以快速找到，拥有“浏览次数（PV）”、“独立访客（UV）”、“IP”、“访问次数（Session）”这种基础流量指标，也拥有像“平均访问时长”、“跳出率”这种衡量访客行为的指标。</span><a href='http://help.cnzz.com/tongji/mingcijieshi/'><span>更多可提供的指标见这里</span></a><span>。</span></p><h3 id='f上线'><span>f.上线：</span></h3><p><span>把你的服务器软件运行起来就上线了</span></p><h2 id='7java-web概述'><span>7.JAVA WEB概述：</span></h2><p><span>如果你想成为一个专业的后端开发工程师</span></p><p><span>参照动力节点Java web学习流程：</span><a href='https://space.bilibili.com/76542346/favlist?fid=124751046' target='_blank' class='url'>https://space.bilibili.com/76542346/favlist?fid=124751046</a></p><p>&nbsp;</p><p>&nbsp;</p></div></div>
+</body>
+</html>
